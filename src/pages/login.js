@@ -25,7 +25,9 @@ export default function Login() {
       setError(true);
     } else {
       setError(false);
+      router.push("Components/Profile/Profile.jsx");
     }
+
   };
 
   return (
