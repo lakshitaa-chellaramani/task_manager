@@ -4,26 +4,21 @@ import Link from "next/link";
 import { getAuth, signOut } from "firebase/auth";
 import app from "@/lib/firebase";
 import { useAuth } from "@/lib/auth";
+import Dashboard from "@/Components/Dashboard";
+import { router } from "next/router";
+import Profile from "@/Components/Profile/Profile";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const auth = getAuth(app);
   const { user } = useAuth();
-
+  if (!user) {
+    router.push("/login");
+  }
   return (
-    <div className="flex h-screen justify-center items-center space-x-5">
-      {!user && <Link href="/login">Login</Link>}
-      {!user && <Link href="/signup">Signup</Link>}
-      {user && (
-        <button
-          onClick={() => {
-            signOut(auth);
-          }}
-        >
-          Logout
-        </button>
-      )}
+    <div>
+      <Dashboard />
     </div>
   );
 }

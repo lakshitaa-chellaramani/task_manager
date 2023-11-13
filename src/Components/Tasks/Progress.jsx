@@ -1,17 +1,17 @@
+import { MoreHorizontal, Plus } from 'lucide-react';
 import React from 'react'
 
 const Progress = () => {
   return (
     <div>
       <div className='bg-[#eef2f5] w-full  lg:w-96  h-[77vh] rounded-xl'>
-        <div className='grid grid-cols-2'>
-          <div className='flex p-4 justify-start'>
+        <div className='grid mx-6  grid-cols-2'>
+          <div className='flex py-4 justify-start'>
             <h1 className="text-md font-bold text-gray-800">In progress</h1>
           </div>
-          <div className='flex gap-4 p-4 justify-end'>
-            <button>
-              <img src="add.svg" className='w-6 h-6' alt="" /></button>
-            <button> <img src="tdots.svg" className='w-6 h-6' alt="" /></button>
+          <div className='flex gap-4 py-4 justify-end'>
+          <Plus className='h-6 w-6'/>
+            <MoreHorizontal className='h-6 w-6'/>
           </div>
         </div>
         <div className='flex mt-4 justify-center'>
