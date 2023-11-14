@@ -1,6 +1,7 @@
 import taskContext from "@/lib/taskContext";
 import { useContext } from "react";
 import { Draggable } from "react-beautiful-dnd";
+import TimeAgo from "./TimeAgo";
 
 const Task = ({ taskId, title, content, date, index }) => {
     const {handleDelete}=useContext(taskContext);
@@ -45,7 +46,7 @@ const Task = ({ taskId, title, content, date, index }) => {
                     />
                   </div>
                   <div className="flex justify-end">
-                    <button className="text-xs  bg-[#22C8AA] rounded-lg px-4 text-gray-50">{date}</button>
+                    <button className="text-xs  bg-[#22C8AA] rounded-lg px-4 text-gray-50"><TimeAgo timestamp={date} /></button>
                   </div>
                     <button onClick={()=>handleDelete(taskId)}>DELETE</button>
                 </div>

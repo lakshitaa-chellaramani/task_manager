@@ -6,7 +6,6 @@ import app from "@/lib/firebase";
 import { useAuth } from "@/lib/auth";
 import Dashboard from "@/Components/Dashboard";
 import { router } from "next/router";
-import Profile from "@/Components/Profile/Profile";
 
 const inter = Inter({ subsets: ["latin"] });
 
