@@ -1,37 +1,28 @@
-import React from 'react'
-import Todo from './Todo'
-import Progress from './Progress'
-import Done from './Done'
-import Dropdown from './Dropdown'
+import { DragDropContext} from "react-beautiful-dnd";
+import { useContext} from "react";
+import Dropdown from "./Dropdown";
+import taskContext from "@/lib/taskContext";
+import CardContainer from "./CardContainer";
+
 const TaskDashboard = () => {
+  const {tasks, handleDragAndDrop}=useContext(taskContext);
   return (
-    <div>
-      <Dropdown />
-      <div class="px-6 ">
-
-        <div
-          class="flex mt-4 items-center justify-center">
-
-          <div>
-            <div className='grid  lg:grid-cols-3 gap-6'>
-              <div>
-                <Todo />
-
-              </div>
-              <div>
-                <Progress />
-
-              </div>
-              <div>
-                <Done />
-
-              </div>
-            </div>
-          </div>
+    <>
+      <DragDropContext onDragEnd={handleDragAndDrop}>
+        <Dropdown/>
+        <div className="px-6 flex mt-4 items-center justify-center">
+          {tasks.map((task, index) => (
+            <CardContainer
+              key={task.group}
+              title={task.group}
+              tasks={task.items}
+              index={index}
+            />
+          ))}
         </div>
-      </div>
-    </div>
-  )
-}
+      </DragDropContext>
+    </>
+  );
+};
 
-export default TaskDashboard
+export default TaskDashboard;

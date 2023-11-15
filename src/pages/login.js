@@ -27,7 +27,6 @@ export default function Login() {
       setError(false);
           //router.push("/Profile");
     }
-
   };
 
   return (
