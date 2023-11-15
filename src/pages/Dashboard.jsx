@@ -1,8 +1,9 @@
 import React from 'react'
-import Aside from './Aside'
-import Navbar from './Navbar'
-import Content from './Content'
+import Aside from '../Components/Aside'
+import Navbar from '../Components/Navbar'
+import Content from '../Components/Content'
 const Dashboard = () => {
+    
     return (
         <div>
 
@@ -11,6 +12,7 @@ const Dashboard = () => {
                 <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
                     <Navbar />
                     <Content />
+                    
                 </div>
             </div>
 

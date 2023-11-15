@@ -1,6 +1,17 @@
 import React from 'react'
+import { useRouter } from 'next/router';
+
 
 const Aside = () => {
+  const router = useRouter();
+
+  const handleProfileClick = () => {
+    router.push('/Profile');
+  };
+
+  const handleLogoutClick = () => {
+    router.push('/login');
+  };
   return (
     <div>
        <aside
@@ -62,7 +73,7 @@ const Aside = () => {
                                             class="fill-current group-hover:text-sky-300"
                                         ></path>
                                     </svg>
-                                    <span class="-mr-1 font-medium">Board</span>
+                                    <button onClick={handleProfileClick} ><span class="-mr-1 font-medium">Profile</span></button>
                                 </a>
                             </li>
                             <li>
@@ -118,7 +129,7 @@ const Aside = () => {
                     </div>
 
                     <div class="-mx-6 flex items-center justify-between border-t px-6 pt-4 dark:border-gray-700">
-                        <button class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300">
+                        <button onClick={handleLogoutClick} class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 class="h-6 w-6"
@@ -134,6 +145,7 @@ const Aside = () => {
                                 />
                             </svg>
                             <span class="group-hover:text-gray-700 dark:group-hover:text-white">Logout</span>
+
                         </button>
                     </div>
                 </aside>

@@ -1,7 +1,7 @@
 import React from 'react'
 import TaskDashboard from './Tasks/TaskDashboard'
-import Profile from './Profile/Profile'
-import Dashboard from './Dashboard'
+import Profile from '../pages/Profile'
+import Dashboard from '../pages/Dashboard'
 
 const Content = () => {
   return (

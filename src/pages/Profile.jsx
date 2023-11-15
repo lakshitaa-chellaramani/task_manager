@@ -1,7 +1,13 @@
 import React from 'react'
-import Edit from './Edit'
+import { useRouter } from 'next/router';
+import Edit from './Profile/Edit'
 
 const Profile = () => {
+    const router = useRouter();
+
+  const handleDashboardClick = () => {
+    router.push('/Dashboard');
+  };
     return (
         <div>
           
@@ -18,7 +24,7 @@ const Profile = () => {
                     </div>
                     <div className='flex mx-10 justify-center lg:justify-start'>
                                 <img src='user.svg' alt='' className='w-6 h-6  my-5' />
-                                <h1 className='text-xl lg:text-lg  my-5 ml-2 text-gray-600 font-bold'>Manishkumar Yadav</h1>
+                                <h1 className='text-xl lg:text-lg  my-5 ml-2 text-gray-600 font-bold'>Priyanka Ramachandran</h1>
                             </div>
                     <div className=" relative -top-72 ">
                     <Edit />
@@ -28,19 +34,23 @@ const Profile = () => {
                         <div className='grid  lg:mt-10 gap-4 lg:gap-8 lg:grid-cols-3'>
                             <div className='bg-gray-50  flex w-auto px-2 h-16 rounded-xl border'>
                                 <img src='email.svg' alt='' className='w-6 h-6  my-5' />
-                                <h1 className='text-md  my-5 ml-1 text-gray-500'>Email : <span className='font-bold'>ymanishkumar@gmail.com</span></h1>
+                                <h1 className='text-md  my-5 ml-1 text-gray-500'>Email : <span className='font-bold'>djcsi@gmail.com</span></h1>
                             </div>
                             <div className='bg-gray-50  flex w-auto px-2 h-16 rounded-xl border'>
                                 <img src='calender.svg' alt='' className='w-6 h-6  my-5' />
-                                <h1 className='text-md  my-5 ml-1 text-gray-500'>Year : <span className='font-bold'>BTECH - 2nd Year</span></h1>
+                                <h1 className='text-md  my-5 ml-1 text-gray-500'>Year : <span className='font-bold'>BTECH - 3rd Year</span></h1>
                             </div>
                             <div className='bg-gray-50  flex w-auto px-2 h-16 rounded-xl border'>
                                 <img src='ID.svg' alt='' className='w-6 h-6  my-5' />
-                                <h1 className='text-md  my-5 ml-1 text-gray-500'>SAP ID : <span className='font-bold'>727882</span></h1>
+                                <h1 className='text-md  my-5 ml-1 text-gray-500'>SAP ID : <span className='font-bold'>6000222018</span></h1>
                             </div>
                             <div className='bg-gray-50  flex w-auto px-2 h-16 rounded-xl border'>
                                 <img src='committee.svg' alt='' className='w-6 h-6  my-5' />
-                                <h1 className='text-md  my-5 ml-1 text-gray-500'>Committee : <span className='font-bold'>Something</span></h1>
+                                <h1 className='text-md  my-5 ml-1 text-gray-500'>Committee : <span className='font-bold'>DJCSI-Tech</span></h1>
+                            </div>
+                            <div className='bg-gray-50  flex w-auto px-2 h-16 rounded-xl border'>
+                                <img src='dashboard.svg' alt='' className='w-6 h-6  my-5' />
+                                <button onClick={handleDashboardClick} ><h1 className='text-md  my-5 ml-1 text-gray-500'> User Dashboard <span className='font-bold'>View</span></h1></button>
                             </div>
                             
                         </div>
