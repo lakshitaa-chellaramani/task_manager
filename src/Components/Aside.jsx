@@ -10,61 +10,61 @@ const Aside = () => {
 
   return (
     <div>
-      <aside class="fixed top-0 z-9 ml-[-100%] flex h-screen w-full flex-col justify-between border-r bg-white px-6 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%] dark:bg-gray-800 dark:border-gray-700">
+      <aside className="fixed top-0 z-9 ml-[-100%] flex h-screen w-full flex-col justify-between border-r bg-white px-6 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%] dark:bg-gray-800 dark:border-gray-700">
         <div>
-          <div class="flex justify-center -mx-6 px-6 py-4">
+          <div className="flex justify-center -mx-6 px-6 py-4">
             <a href="#" title="home">
-              <img src="logo.svg" class="w-32" alt="tailus logo" />
+              <img src="logo.svg" className="w-32" alt="tailus logo" />
             </a>
           </div>
 
-          <ul class="mt-8 space-y-2 tracking-wide">
+          <ul className="mt-8 space-y-2 tracking-wide">
             
             <li>
               <a
                 href="/"
                 aria-label="board"
-                class="relative flex items-center space-x-4 rounded-xl bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white"
+                className="relative flex items-center space-x-4 rounded-xl bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white"
               >
-                <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
+                <svg className="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
-                    class="dark:fill-slate-600 fill-current text-cyan-400"
+                    className="dark:fill-slate-600 fill-current text-cyan-400"
                   ></path>
                   <path
                     d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"
-                    class="fill-current text-cyan-200 group-hover:text-cyan-300"
+                    className="fill-current text-cyan-200 group-hover:text-cyan-300"
                   ></path>
                   <path
                     d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"
-                    class="fill-current group-hover:text-sky-300"
+                    className="fill-current group-hover:text-sky-300"
                   ></path>
                 </svg>
-                <span class="-mr-1 font-medium">Board</span>
+                <span className="-mr-1 font-medium">Board</span>
               </a>
             </li>
            
             <li>
               <a
                 href="/profile"
-                class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300"
+                className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
+                  className="h-5 w-5"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
                   <path
-                    class="fill-current text-gray-600 group-hover:text-cyan-600 dark:group-hover:text-cyan-400"
+                    className="fill-current text-gray-600 group-hover:text-cyan-600 dark:group-hover:text-cyan-400"
                     d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"
                   />
                   <path
-                    class="fill-current text-gray-300 group-hover:text-cyan-300"
+                    className="fill-current text-gray-300 group-hover:text-cyan-300"
                     d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"
                   />
                 </svg>
-                <span class="group-hover:text-gray-700 dark:group-hover:text-gray-50">
+                <span className="group-hover:text-gray-700 dark:group-hover:text-gray-50">
                   Profile
                 </span>
               </a>
@@ -74,31 +74,28 @@ const Aside = () => {
 
         <div
          
-          class="-mx-6 flex items-center justify-between border-t px-6 pt-4 dark:border-gray-700"
+          className="-mx-6 flex items-center justify-between border-t px-6 pt-4 dark:border-gray-700"
         >
-          <button class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300">
+          <button className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+               
                 d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
               />
             </svg>
            {user && <span  onClick={() => {
             signOut(auth);
-          }} class="group-hover:text-gray-700 dark:group-hover:text-white">
+          }} className="group-hover:text-gray-700 dark:group-hover:text-white">
               {user.email}
             </span>}
             {!user && <span  onClick={() => {
                 router.push("/login");
-}} class="group-hover:text-gray-700 dark:group-hover:text-white">
+}} className="group-hover:text-gray-700 dark:group-hover:text-white">
               Login
             </span>}
           </button>

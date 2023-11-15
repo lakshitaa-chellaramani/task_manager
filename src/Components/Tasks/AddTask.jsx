@@ -27,7 +27,6 @@ const AddTask = () => {
   const { setModalOpen, handleAddTask, modalGroup, setModalGroup } = useContext(taskContext);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  console.log(modalGroup);
 
   const handleAddTaskClick = () => {
     handleAddTask({ title, content, group: modalGroup });

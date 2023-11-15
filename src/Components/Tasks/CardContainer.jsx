@@ -5,13 +5,18 @@ import { useContext } from "react";
 import taskContext from "@/lib/taskContext";
 import { AnimatePresence } from "framer-motion";
 import AddTask from "./AddTask";
+import createTask from "@/lib/tasks/createTask";
+import { useAuth } from "@/lib/auth";
+import { firestore } from "@/lib/firebase";
 
 const CardContainer = ({ title, tasks }) => {
   const { modalOpen, setModalOpen, setModalGroup } = useContext(taskContext);
-
+  const {user} = useAuth();
+  const {mutate,error} = createTask();
+  console.log(firestore.Timestamp?.now());
   const handleClick = () => {
-    setModalOpen(!modalOpen);
-    setModalGroup(title);
+    
+    mutate({userId:user?.uid,status:title,title:"New Task",content:"New Description",tag:"Development",date:new Date().toISOString()});
   };
   return (
     <>
@@ -20,13 +25,13 @@ const CardContainer = ({ title, tasks }) => {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            className="bg-[#eef2f5] scrollbar-hide overflow-y-auto w-full  lg:w-96 h-[77vh] rounded-xl"
+            className="bg-[#eef2f5] p-4 scrollbar-hide overflow-y-auto w-full  lg:w-96 h-[77vh] rounded-xl"
           >
-            <div className="grid mx-6 grid-cols-2">
-              <div className="flex py-4 justify-start">
+            <div className="grid  grid-cols-2">
+              <div className="flex  justify-start">
                 <h1 className="text-md font-bold text-gray-800">{title}</h1>
               </div>
-              <div className="flex gap-4 py-4 justify-end">
+              <div className="flex gap-4  justify-end">
                 <Plus
                   onClick={handleClick}
                   className="h-6 w-6"
@@ -34,9 +39,13 @@ const CardContainer = ({ title, tasks }) => {
                 <MoreHorizontal className="h-6 w-6" />
               </div>
             </div>
-            {tasks.map((task, index) => (
-              <Task {...task} key={task.taskId} index={index} />
-            ))}
+            <div className="mt-12 grid gap-5">
+
+            {tasks?.map((task, index) => (
+              
+              <Task {...task} category={title} key={task.taskId} index={index} />
+              ))}
+              </div>
             {provided.placeholder}
           </div>
         )}
