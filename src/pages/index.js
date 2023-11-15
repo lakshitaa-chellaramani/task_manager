@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getAuth, signOut } from "firebase/auth";
 import app from "@/lib/firebase";
 import { useAuth } from "@/lib/auth";
-import Dashboard from "@/Components/Dashboard";
+import Dashboard from "@/Pages/Dashboard";
 import { router } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
