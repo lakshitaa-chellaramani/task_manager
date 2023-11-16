@@ -31,8 +31,10 @@ export const AuthContextProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+  const userId = user ? user.uid : null; // Access the uid property of the user object
+
   return (
-    <AuthContext.Provider value={{ user }}>
+    <AuthContext.Provider value={{ user, userId }}>
       {loading ? (
         <div className="h-screen flex justify-center items-center">
           Loading..
