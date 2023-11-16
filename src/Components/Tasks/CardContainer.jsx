@@ -1,20 +1,21 @@
 import { MoreHorizontal, Plus } from "lucide-react";
 import { Droppable } from "react-beautiful-dnd";
 import Task from "./Task";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import taskContext from "@/lib/taskContext";
 import { AnimatePresence } from "framer-motion";
 import AddTask from "./AddTask";
 
 const CardContainer = ({ title, tasks }) => {
-  const { modalOpen, setModalOpen, setModalGroup } = useContext(taskContext);
-
+  const {  setModalGroup } = useContext(taskContext);
+  const [modalOpen, setModalOpen] = useState(false)
   const handleClick = () => {
     setModalOpen(!modalOpen);
     setModalGroup(title);
   };
   return (
     <>
+        {modalOpen && <AddTask/>}
       <Droppable droppableId={title}>
         {(provided) => (
           <div
@@ -28,22 +29,22 @@ const CardContainer = ({ title, tasks }) => {
               </div>
               <div className="flex gap-4 py-4 justify-end">
                 <Plus
-                  onClick={handleClick}
-                  className="h-6 w-6"
+                  onClick={()=>handleClick()}
+                  className="h-6 w-6 cursor-pointer"
                 />
                 <MoreHorizontal className="h-6 w-6" />
               </div>
             </div>
-            {tasks.map((task, index) => (
+           <div className="flex flex-col gap-5">
+           {tasks.map((task, index) => (
               <Task {...task} key={task.taskId} index={index} />
             ))}
+           </div>
             {provided.placeholder}
           </div>
         )}
       </Droppable>
-      <AnimatePresence exitBeforeEnter={false}>
-        {modalOpen && <AddTask/>}
-      </AnimatePresence>
+      
     </>
   );
 };

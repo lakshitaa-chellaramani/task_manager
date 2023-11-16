@@ -1,6 +1,17 @@
 import taskContext from "@/lib/taskContext";
 import { motion } from "framer-motion";
 import React, { useContext, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+
 
 const dropIn = {
   hidden: {
@@ -24,49 +35,53 @@ const dropIn = {
 };
 
 const AddTask = () => {
-  const { setModalOpen, handleAddTask, modalGroup, setModalGroup } = useContext(taskContext);
+  const {  handleAddTask, modalGroup } =
+    useContext(taskContext);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  console.log(modalGroup);
+  const [openModal, setOpenModal] = useState(true)
 
   const handleAddTaskClick = () => {
     handleAddTask({ title, content, group: modalGroup });
     setTitle("");
     setContent("");
-};
+    setOpenModal(false);
+   
+  };
 
   return (
     <>
-      <motion.div
-        className="fixed z-10 top-0 left-0 h-full w-full bg-black bg-opacity-40 flex items-center justify-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={() => setModalOpen(false)}
-      >
-        <motion.div
-          onClick={(e) => e.stopPropagation()}
-          className="w-full sm:w-3/4 md:w-5/6 lg:w-11/12 max-w-2xl h-[50% sm:h-300px] mx-auto px-8 py-4 rounded-lg flex justify-center items-center bg-red-500"
-          variants={dropIn}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-          <input
-            type="text"
-            placeholder="Enter Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Enter Content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-          <button onClick={handleAddTaskClick}>Add Task</button>
-        </motion.div>
-      </motion.div>
+      <Dialog open={openModal} >
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle className="text-center">Add Task</DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-col gap-4 py-4">
+            <div>
+              <Input
+                type="text"
+                className="w-full "
+                placeholder="Enter Task Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <div>
+              <Input
+                type="text"
+                className="w-full "
+
+                placeholder="Enter Task Description"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" className="hover:bg-[black] hover:text-[white] transition duration-100 ease-in" onClick={handleAddTaskClick}>Save changes</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };

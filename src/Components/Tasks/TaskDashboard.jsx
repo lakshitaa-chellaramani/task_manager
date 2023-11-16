@@ -10,7 +10,7 @@ const TaskDashboard = () => {
     <>
       <DragDropContext onDragEnd={handleDragAndDrop}>
         <Dropdown/>
-        <div className="px-6 flex mt-4 items-center justify-center">
+        <div className="px-6 flex mt-4 items-center justify-center flex-col md:flex-row gap-5">
           {tasks.map((task, index) => (
             <CardContainer
               key={task.group}
